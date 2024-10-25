@@ -18,16 +18,66 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-from google.colab import drive
-drive.mount('/content/drive')
+nimage.getInfo()['bands']
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[3], line 1[0m
-[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mgoogle[39;00m[38;5;21;01m.[39;00m[38;5;21;01mcolab[39;00m [38;5;28;01mimport[39;00m drive
-[1;32m      2[0m drive[38;5;241m.[39mmount([38;5;124m'[39m[38;5;124m/content/drive[39m[38;5;124m'[39m)
+[0;31mHttpError[0m                                 Traceback (most recent call last)
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/ee/data.py:406[0m, in [0;36m_execute_cloud_call[0;34m(call, num_retries)[0m
+[1;32m    405[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 406[0m   [38;5;28;01mreturn[39;00m [43mcall[49m[38;5;241;43m.[39;49m[43mexecute[49m[43m([49m[43mnum_retries[49m[38;5;241;43m=[39;49m[43mnum_retries[49m[43m)[49m
+[1;32m    407[0m [38;5;28;01mexcept[39;00m googleapiclient[38;5;241m.[39merrors[38;5;241m.[39mHttpError [38;5;28;01mas[39;00m e:
 
-[0;31mModuleNotFoundError[0m: No module named 'google.colab'
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/googleapiclient/_helpers.py:130[0m, in [0;36mpositional.<locals>.positional_decorator.<locals>.positional_wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    129[0m         logger[38;5;241m.[39mwarning(message)
+[0;32m--> 130[0m [38;5;28;01mreturn[39;00m [43mwrapped[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/googleapiclient/http.py:938[0m, in [0;36mHttpRequest.execute[0;34m(self, http, num_retries)[0m
+[1;32m    937[0m [38;5;28;01mif[39;00m resp[38;5;241m.[39mstatus [38;5;241m>[39m[38;5;241m=[39m [38;5;241m300[39m:
+[0;32m--> 938[0m     [38;5;28;01mraise[39;00m HttpError(resp, content, uri[38;5;241m=[39m[38;5;28mself[39m[38;5;241m.[39muri)
+[1;32m    939[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39mpostproc(resp, content)
+
+[0;31mHttpError[0m: <HttpError 400 when requesting https://earthengine.googleapis.com/v1/projects/ee-ivanlizarazo/value:compute?prettyPrint=false&alt=json returned "Image.select: Band pattern 'ST_B6' did not match any bands. Available bands: [B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, QA_PIXEL, QA_RADSAT, SAA, SZA, VAA, VZA]". Details: "Image.select: Band pattern 'ST_B6' did not match any bands. Available bands: [B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, QA_PIXEL, QA_RADSAT, SAA, SZA, VAA, VZA]">
+
+During handling of the above exception, another exception occurred:
+
+[0;31mEEException[0m                               Traceback (most recent call last)
+Cell [0;32mIn[14], line 1[0m
+[0;32m----> 1[0m [43mnimage[49m[38;5;241;43m.[39;49m[43mgetInfo[49m[43m([49m[43m)[49m[[38;5;124m'[39m[38;5;124mbands[39m[38;5;124m'[39m]
+
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/ee/image.py:143[0m, in [0;36mImage.getInfo[0;34m(self)[0m
+[1;32m    135[0m [38;5;28;01mdef[39;00m [38;5;21mgetInfo[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m Optional[Any]:
+[1;32m    136[0m [38;5;250m  [39m[38;5;124;03m"""Fetch and return information about this image.[39;00m
+[1;32m    137[0m 
+[1;32m    138[0m [38;5;124;03m  Returns:[39;00m
+[0;32m   (...)[0m
+[1;32m    141[0m [38;5;124;03m        properties - Dictionary containing the image's metadata properties.[39;00m
+[1;32m    142[0m [38;5;124;03m  """[39;00m
+[0;32m--> 143[0m   [38;5;28;01mreturn[39;00m [38;5;28;43msuper[39;49m[43m([49m[43m)[49m[38;5;241;43m.[39;49m[43mgetInfo[49m[43m([49m[43m)[49m
+
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/ee/computedobject.py:107[0m, in [0;36mComputedObject.getInfo[0;34m(self)[0m
+[1;32m    101[0m [38;5;28;01mdef[39;00m [38;5;21mgetInfo[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m Optional[Any]:
+[1;32m    102[0m [38;5;250m  [39m[38;5;124;03m"""Fetch and return information about this object.[39;00m
+[1;32m    103[0m 
+[1;32m    104[0m [38;5;124;03m  Returns:[39;00m
+[1;32m    105[0m [38;5;124;03m    The object can evaluate to anything.[39;00m
+[1;32m    106[0m [38;5;124;03m  """[39;00m
+[0;32m--> 107[0m   [38;5;28;01mreturn[39;00m [43mdata[49m[38;5;241;43m.[39;49m[43mcomputeValue[49m[43m([49m[38;5;28;43mself[39;49m[43m)[49m
+
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/ee/data.py:1126[0m, in [0;36mcomputeValue[0;34m(obj)[0m
+[1;32m   1123[0m body [38;5;241m=[39m {[38;5;124m'[39m[38;5;124mexpression[39m[38;5;124m'[39m: serializer[38;5;241m.[39mencode(obj, for_cloud_api[38;5;241m=[39m[38;5;28;01mTrue[39;00m)}
+[1;32m   1124[0m _maybe_populate_workload_tag(body)
+[0;32m-> 1126[0m [38;5;28;01mreturn[39;00m [43m_execute_cloud_call[49m[43m([49m
+[1;32m   1127[0m [43m    [49m[43m_get_cloud_projects[49m[43m([49m[43m)[49m
+[1;32m   1128[0m [43m    [49m[38;5;241;43m.[39;49m[43mvalue[49m[43m([49m[43m)[49m
+[1;32m   1129[0m [43m    [49m[38;5;241;43m.[39;49m[43mcompute[49m[43m([49m[43mbody[49m[38;5;241;43m=[39;49m[43mbody[49m[43m,[49m[43m [49m[43mproject[49m[38;5;241;43m=[39;49m[43m_get_projects_path[49m[43m([49m[43m)[49m[43m,[49m[43m [49m[43mprettyPrint[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m)[49m
+[1;32m   1130[0m [43m[49m[43m)[49m[[38;5;124m'[39m[38;5;124mresult[39m[38;5;124m'[39m]
+
+File [0;32m~/.cache/pypoetry/virtualenvs/gee-python-ux0q8Gst-py3.12/lib/python3.12/site-packages/ee/data.py:408[0m, in [0;36m_execute_cloud_call[0;34m(call, num_retries)[0m
+[1;32m    406[0m   [38;5;28;01mreturn[39;00m call[38;5;241m.[39mexecute(num_retries[38;5;241m=[39mnum_retries)
+[1;32m    407[0m [38;5;28;01mexcept[39;00m googleapiclient[38;5;241m.[39merrors[38;5;241m.[39mHttpError [38;5;28;01mas[39;00m e:
+[0;32m--> 408[0m   [38;5;28;01mraise[39;00m _translate_cloud_exception(e)
+
+[0;31mEEException[0m: Image.select: Band pattern 'ST_B6' did not match any bands. Available bands: [B1, B2, B3, B4, B5, B6, B7, B8, B9, B10, B11, QA_PIXEL, QA_RADSAT, SAA, SZA, VAA, VZA]
 
